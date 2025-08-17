@@ -1,0 +1,371 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Arial', sans-serif;
+    background: #000;
+    margin: 0;
+    padding: 0;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+}
+
+.game-container {
+    text-align: center;
+    background: #000;
+    padding: 20px;
+}
+
+
+
+#gameCanvas {
+    background: #000;
+    max-width: 100%;
+    height: auto;
+}
+
+.controls {
+    margin-top: 20px;
+    color: #fff;
+    font-size: 14px;
+    font-family: 'Courier New', monospace;
+}
+
+.controls p {
+    margin: 5px 0;
+}
+
+.end-page {
+    background: linear-gradient(135deg, #ff6b9d 0%, #ff8fab 100%);
+    flex-direction: column;
+    padding: 20px;
+}
+
+.end-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    max-width: 800px;
+    margin-bottom: 30px;
+    padding: 20px;
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 15px;
+    backdrop-filter: blur(10px);
+}
+
+.score-badge {
+    background: rgba(255, 255, 255, 0.9);
+    color: #333;
+    padding: 10px 20px;
+    border-radius: 25px;
+    font-weight: bold;
+    font-size: 18px;
+    display: none;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+.replay-btn {
+    background: linear-gradient(45deg, #4a90e2, #5ba0f2);
+    color: white;
+    border: none;
+    padding: 12px 24px;
+    border-radius: 25px;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(74, 144, 226, 0.3);
+}
+
+.replay-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(74, 144, 226, 0.4);
+}
+
+.replay-btn:active {
+    transform: translateY(0);
+}
+
+.bouquet-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    flex: 1;
+    position: relative;
+}
+
+.bouquet {
+    width: 300px;
+    height: 400px;
+    margin-bottom: 30px;
+    filter: drop-shadow(0 10px 30px rgba(0, 0, 0, 0.2));
+}
+
+.bouquet svg {
+    width: 100%;
+    height: 100%;
+}
+
+.message {
+    font-size: 48px;
+    font-weight: bold;
+    color: white;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+    margin-top: 20px;
+    font-family: 'Courier New', monospace;
+    letter-spacing: 2px;
+}
+
+.particles {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 10;
+}
+
+.particle {
+    position: absolute;
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    pointer-events: none;
+}
+
+@media (max-width: 768px) {
+    .game-container {
+        margin: 10px;
+        padding: 15px;
+    }
+    
+    #gameCanvas {
+        width: 100%;
+        max-width: 400px;
+    }
+    
+    .hud {
+        flex-direction: column;
+        gap: 10px;
+    }
+    
+    .score {
+        font-size: 20px;
+    }
+    
+    .end-header {
+        flex-direction: column;
+        gap: 15px;
+        text-align: center;
+    }
+    
+    .bouquet {
+        width: 250px;
+        height: 350px;
+    }
+    
+    .message {
+        font-size: 36px;
+    }
+}
+
+@media (max-width: 480px) {
+    .game-container {
+        padding: 10px;
+    }
+    
+    #gameCanvas {
+        max-width: 300px;
+    }
+    
+    .score {
+        font-size: 18px;
+    }
+    
+    .bouquet {
+        width: 200px;
+        height: 280px;
+    }
+    
+    .message {
+        font-size: 28px;
+    }
+    
+    .replay-btn {
+        padding: 10px 20px;
+        font-size: 14px;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    * {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+    }
+    
+    .bouquet {
+        opacity: 1 !important;
+    }
+    
+    .message {
+        opacity: 1 !important;
+    }
+}
+
+@media (prefers-color-scheme: dark) {
+    .game-container {
+        background: rgba(30, 30, 30, 0.95);
+        color: #fff;
+    }
+    
+    .score {
+        color: #fff;
+    }
+    
+    .controls {
+        color: #ccc;
+    }
+}
+
+@media (orientation: landscape) and (max-height: 500px) {
+    .end-page {
+        padding: 10px;
+    }
+    
+    .end-header {
+        margin-bottom: 15px;
+        padding: 10px;
+    }
+    
+    .bouquet {
+        width: 200px;
+        height: 250px;
+        margin-bottom: 15px;
+    }
+    
+    .message {
+        font-size: 32px;
+        margin-top: 10px;
+    }
+
+
+    /* === END PAGE — BLACK THEME OVERRIDES === */
+.end-page {
+    background: #000 !important;
+    flex-direction: column;
+    padding: 20px;
+  }
+  
+  .end-header {
+    background: rgba(255,255,255,0.06) !important;
+    border: 1px solid rgba(255,255,255,0.08);
+    border-radius: 14px;
+    width: 100%;
+    max-width: 800px;
+    margin-bottom: 30px;
+    padding: 12px 16px;
+    backdrop-filter: blur(10px);
+  }
+  
+  .replay-btn {
+    background: rgba(255,255,255,0.08) !important;
+    color: #fff !important;
+    border: 1px solid rgba(255,255,255,0.12) !important;
+    box-shadow: none !important;
+  }
+  .replay-btn:hover { transform: translateY(-1px); }
+  
+  .bouquet-container { position: relative; }
+  .bouquet { filter: drop-shadow(0 10px 30px rgba(255, 90, 140, 0.12)); }
+  
+  .message {
+    font-size: 48px;
+    font-weight: 700;
+    color: #ffffff;
+    text-shadow: none;
+    margin-top: 20px;
+    font-family: 'Courier New', monospace;
+    letter-spacing: 2px;
+    display: inline-flex;
+    align-items: center;
+    gap: 2px;
+  }
+  #caret { opacity: 1; }
+  
+  .particles .particle {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    mix-blend-mode: screen;
+  }
+  
+  /* адаптив */
+  @media (max-width: 480px) {
+    .message { font-size: 32px; }
+  }
+  /* --- END PAGE FLOWERS --- */
+.end-page {
+    background: #000;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    flex-direction: column;
+  }
+  
+  .message {
+    color: #fff;
+    font-size: 2.5rem;
+    font-family: 'Courier New', monospace;
+    margin-bottom: 30px;
+    animation: typing 4s steps(12, end), blink .75s step-end infinite;
+    overflow: hidden;
+    white-space: nowrap;
+    border-right: 3px solid #fff;
+  }
+  
+  @keyframes typing {
+    from { width: 0 }
+    to { width: 100% }
+  }
+  
+  @keyframes blink {
+    50% { border-color: transparent }
+  }
+  
+  .flowers {
+    position: relative;
+    width: 300px;
+    height: 300px;
+    margin: auto;
+  }
+  
+  /* сюда идут стили цветков и травы из style.css проекта GitHub */
+  .flower,
+  .flower__leaf,
+  .flower__white,
+  .flower__light,
+  .flower__grass {
+    position: absolute;
+    /* остальной код прямо из их style.css */
+  }
+  /* Flowers animation styles (scoped to .end-page) */
+.end-page {
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+    min-height: 100vh;
+    background: #000000;
+    overflow: hidden;
+  }
+}

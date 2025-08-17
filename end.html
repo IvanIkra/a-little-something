@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+  <title>i miss u</title>
+  <link rel="stylesheet" href="css/flowers.css"/>
+  <meta name="theme-color" content="#000000"/>
+
+  <style>
+    .message {
+      position: absolute;
+      top: 10%;
+      width: 100%;
+      text-align: center;
+      font-size: 2.5rem;
+      color: #fff;
+      font-family: "Courier New", monospace;
+      z-index: 10;
+      opacity: 0;
+      transform: translateY(-6px);
+      transition: opacity .6s ease, transform .6s ease;
+      letter-spacing: 0;
+      font-variant-ligatures: none;
+    }
+
+    .message.ready { opacity: 1; transform: translateY(0); }
+
+    /* курсор — тонкая мигающая полоска вплотную к тексту */
+    .caret {
+      display: inline-block;
+      width: 2px;
+      height: 1em;
+      background: #fff;
+      margin-left: 0;
+      vertical-align: -0.1em;
+      animation: caretBlink .7s step-end infinite;
+    }
+    .caret.tight { transform: translateX(-1px); }
+
+    @keyframes caretBlink { 50% { opacity: 0; } }
+
+    /* встроенный смайлик — как обычная буква по кеглю */
+    .emoji-inline {
+      display: inline-block;
+      height: 1em;      /* высота как у текста */
+      width: auto;      /* сохранить пропорции */
+      vertical-align: -0.15em; /* подровнять к базовой линии */
+    }
+
+    @media (max-width: 480px) {
+      .message { font-size: 1.8rem; }
+    }
+  </style>
+</head>
+<body class="not-loaded">
+  <!-- Надпись (печать по символам) -->
+  <div class="message">
+    <span id="typed"></span><span class="caret"></span>
+  </div>
+
+  <!-- Цветы (без травы) -->
+  <div class="night"></div>
+  <div class="flowers">
+    <!-- Flower 1 -->
+    <div class="flower flower--1">
+      <div class="flower__leafs flower__leafs--1">
+        <div class="flower__leaf flower__leaf--1"></div>
+        <div class="flower__leaf flower__leaf--2"></div>
+        <div class="flower__leaf flower__leaf--3"></div>
+        <div class="flower__leaf flower__leaf--4"></div>
+        <div class="flower__white-circle"></div>
+        <div class="flower__light flower__light--1"></div>
+        <div class="flower__light flower__light--2"></div>
+        <div class="flower__light flower__light--3"></div>
+        <div class="flower__light flower__light--4"></div>
+        <div class="flower__light flower__light--5"></div>
+        <div class="flower__light flower__light--6"></div>
+        <div class="flower__light flower__light--7"></div>
+        <div class="flower__light flower__light--8"></div>
+      </div>
+      <div class="flower__line">
+        <div class="flower__line__leaf flower__line__leaf--1"></div>
+        <div class="flower__line__leaf flower__line__leaf--2"></div>
+        <div class="flower__line__leaf flower__line__leaf--3"></div>
+        <div class="flower__line__leaf flower__line__leaf--4"></div>
+        <div class="flower__line__leaf flower__line__leaf--5"></div>
+        <div class="flower__line__leaf flower__line__leaf--6"></div>
+      </div>
+    </div>
+
+    <!-- Flower 2 -->
+    <div class="flower flower--2">
+      <div class="flower__leafs flower__leafs--2">
+        <div class="flower__leaf flower__leaf--1"></div>
+        <div class="flower__leaf flower__leaf--2"></div>
+        <div class="flower__leaf flower__leaf--3"></div>
+        <div class="flower__leaf flower__leaf--4"></div>
+        <div class="flower__white-circle"></div>
+        <div class="flower__light flower__light--1"></div>
+        <div class="flower__light flower__light--2"></div>
+        <div class="flower__light flower__light--3"></div>
+        <div class="flower__light flower__light--4"></div>
+        <div class="flower__light flower__light--5"></div>
+        <div class="flower__light flower__light--6"></div>
+        <div class="flower__light flower__light--7"></div>
+        <div class="flower__light flower__light--8"></div>
+      </div>
+      <div class="flower__line">
+        <div class="flower__line__leaf flower__line__leaf--1"></div>
+        <div class="flower__line__leaf flower__line__leaf--2"></div>
+        <div class="flower__line__leaf flower__line__leaf--3"></div>
+        <div class="flower__line__leaf flower__line__leaf--4"></div>
+      </div>
+    </div>
+
+    <!-- Flower 3 -->
+    <div class="flower flower--3">
+      <div class="flower__leafs flower__leafs--3">
+        <div class="flower__leaf flower__leaf--1"></div>
+        <div class="flower__leaf flower__leaf--2"></div>
+        <div class="flower__leaf flower__leaf--3"></div>
+        <div class="flower__leaf flower__leaf--4"></div>
+        <div class="flower__white-circle"></div>
+        <div class="flower__light flower__light--1"></div>
+        <div class="flower__light flower__light--2"></div>
+        <div class="flower__light flower__light--3"></div>
+        <div class="flower__light flower__light--4"></div>
+        <div class="flower__light flower__light--5"></div>
+        <div class="flower__light flower__light--6"></div>
+        <div class="flower__light flower__light--7"></div>
+        <div class="flower__light flower__light--8"></div>
+      </div>
+      <div class="flower__line">
+        <div class="flower__line__leaf flower__line__leaf--1"></div>
+        <div class="flower__line__leaf flower__line__leaf--2"></div>
+        <div class="flower__line__leaf flower__line__leaf--3"></div>
+        <div class="flower__line__leaf flower__line__leaf--4"></div>
+      </div>
+    </div>
+  </div>
+
+  <script src="js/end.js"></script>
+</body>
+</html>
