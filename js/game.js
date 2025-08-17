@@ -45,34 +45,39 @@ class DinoGame {
 
     setupEventListeners() {
         const jumpKeys = [' ', 'ArrowUp', 'w', 'W'];
-
+    
+        const trigger = () => {
+            if (!this.isGameStarted) {
+                this.startGame();
+            } else if (!this.dino.isJumping && !this.isGameOver) {
+                this.jump();
+            }
+        };
+    
+        // Клавиатура
         document.addEventListener('keydown', (e) => {
             if (jumpKeys.includes(e.key)) {
-                if (!this.isGameStarted) {
-                    this.startGame();
-                } else if (!this.dino.isJumping && !this.isGameOver) {
-                    this.jump();
-                }
+                trigger();
                 e.preventDefault();
             }
         });
-
-        this.canvas.addEventListener('click', () => {
-            if (!this.isGameStarted) {
-                this.startGame();
-            } else if (!this.dino.isJumping && !this.isGameOver) {
-                this.jump();
-            }
-        });
-
-        this.canvas.addEventListener('touchstart', (e) => {
-            if (!this.isGameStarted) {
-                this.startGame();
-            } else if (!this.dino.isJumping && !this.isGameOver) {
-                this.jump();
-            }
-            e.preventDefault();
-        });
+    
+        // Тап/клик ПО ВСЕЙ СТРАНИЦЕ (не только по канвасу)
+        const onPointer = (e) => {
+            trigger();
+            // предотвращаем скролл/зум по тапу
+            if (e) e.preventDefault?.();
+        };
+    
+        document.addEventListener('click', onPointer, { passive: false });
+        document.addEventListener('touchstart', onPointer, { passive: false });
+    
+        // Также оставим возможность стартовать по канвасу (не обязательно, но ок)
+        this.canvas.addEventListener('click', (e) => { onPointer(e); }, { passive: false });
+        this.canvas.addEventListener('touchstart', (e) => { onPointer(e); }, { passive: false });
+    
+        // Хак под iOS Safari, чтобы звук/тач корректно инициализировались
+        window.addEventListener('touchend', () => {}, { passive: true });
     }
 
     startGame() {

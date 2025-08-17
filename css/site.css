@@ -368,4 +368,19 @@ body {
     background: #000000;
     overflow: hidden;
   }
+  /* --- Mobile-friendly canvas --- */
+#gameCanvas {
+    width: 100vw;      /* растягиваем по ширине экрана */
+    max-width: 100%;
+    height: auto;      /* сохраняем пропорции канваса */
+    display: block;
+    margin: 0 auto;
+    image-rendering: pixelated; /* чтобы пиксель-арт не мыло */
+  }
+  
+  /* чтобы тапы не тянули страницу */
+  html, body {
+    touch-action: manipulation;  /* отключает зум по дабл-тапу/долгий тап */
+    overscroll-behavior: none;   /* без резинового скролла */
+  }
 }
